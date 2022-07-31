@@ -3,12 +3,12 @@ import Card from 'react-bootstrap/Card'
 import { Link } from 'react-router-dom'
 
 import LoadingScreen from '../shared/LoadingScreen'
-import { getAllPets } from '../../api/pets'
+import { getAllShoes } from '../../api/shoes'
 import messages from '../shared/AutoDismissAlert/messages'
 
 
-// PetsIndex should make a request to the api
-// To get all pets
+// ShoesIndex should make a request to the api
+// To get all shoes
 // Then display them when it gets them
 
 // style for our card container
@@ -18,22 +18,22 @@ flexFlow: 'row wrap',
 justifyContent: 'center'
 }
 
-const PetsIndex = (props) => {
-const [pets, setPets] = useState(null)
+const ShoesIndex = (props) => {
+const [shoes, setShoes] = useState(null)
 const [error, setError] = useState(false)
 
 const { msgAlert } = props
 
-console.log('Props in PetsIndex', props)
+console.log('Props in ShoesIndex', props)
 
 useEffect(() => {
     console.log(props)
-    getAllPets()
-        .then(res => setPets(res.data.pets))
+    getAllShoes()
+        .then(res => setShoes(res.data.shoes))
         .catch(err => {
             msgAlert({
-                heading: 'Error Getting Pets',
-                message: messages.getPetsFailure,
+                heading: 'Error Getting Shoes',
+                message: messages.getShoesFailure,
                 variant: 'danger',
             })
             setError(true)
@@ -44,19 +44,19 @@ useEffect(() => {
         return <p>Error!</p>
     }
 
-    // If pets haven't been loaded yet, show a loading message
-    if (!pets) {
+    // If shoes haven't been loaded yet, show a loading message
+    if (!shoes) {
         return <LoadingScreen />
-    } else if (pets.length === 0) {
-        return <p>No pets yet. Better add some.</p>
+    } else if (shoes.length === 0) {
+        return <p>There aren't any shoes here. Better add some dope kicks.</p>
     }
 
-    const petCards = pets.map(pet => (
-        <Card style={{ width: '30%', margin: 5}} key={ pet.id }>
-            <Card.Header>{ pet.fullTitle }</Card.Header>
+    const shoeCards = shoes.map(shoe => (
+        <Card style={{ width: '30%', margin: 5}} key={ shoe.id }>
+            <Card.Header>{ shoe.fullTitle }</Card.Header>
             <Card.Body>
                 <Card.Text>
-                    <Link to={`/pets/${pet.id}`}>View { pet.name }</Link>
+                    <Link to={`/shoes/${shoe.id}`}>Check out the { shoe.name }s</Link>
                 </Card.Text>
             </Card.Body>
         </Card>
@@ -64,9 +64,9 @@ useEffect(() => {
 
     return (
         <div style={ cardContainerStyle }>
-            { petCards }
+            { shoeCards }
         </div>
     )
 }
 
-export default PetsIndex
+export default ShoesIndex

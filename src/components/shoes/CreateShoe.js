@@ -1,30 +1,31 @@
 import { useState } from 'react'
 
-import PetForm from '../shared/PetForm'
+import ShoeForm from '../shared/ShoeForm'
 
-const CreatePet = (props) => {
-    const [pet, setPet] = useState({
+const CreateShoe = (props) => {
+    const [shoe, setShoe] = useState({
+        brand: '',
         name: '',
-        type: '',
-        age: '',
+        color: '',
+        style: '',
         adoptable: false
     })
 
     const handleChange = (e) => {
-        setPet(prevPet => {
+        setShoe(prevShoe => {
             const updatedValue = e.target.value
             const updatedName = e.target.name
-            const updatedPet = {
+            const updatedShoe = {
                 [updatedName]: updatedValue
             }
             return {
-                ...prevPet,
-                ...updatedPet
+                ...prevShoe,
+                ...updatedShoe
             }
         })
     }
 
-    return <PetForm pet={ pet } handleChange={ handleChange } />
+    return <ShoeForm shoe={ shoe } handleChange={ handleChange } />
 }
 
-export default CreatePet
+export default CreateShoe

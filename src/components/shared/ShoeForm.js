@@ -3,31 +3,36 @@ import {
     Button, 
 } from 'react-bootstrap'
 
-const PetForm = (props) => {
+const ShoeForm = (props) => {
     return (
         <Form>
+            <Form.Label htmlFor="brand">Brand</Form.Label>
+            <Form.Control
+                placeholder="What brand is your shoe?"
+                name="brand"
+                id="brand"
+            />
             <Form.Label htmlFor="name">Name</Form.Label>
             <Form.Control
-                placeholder="What is your pet's name?"
-                name="name"
-                id="name"
-            />
-            <Form.Label htmlFor="type">Type</Form.Label>
-            <Form.Control
-                placeholder="What kind of pet is this?"
+                placeholder="Which shoe is it?"
                 name="type"
                 id="type"
             />
-            <Form.Label htmlFor="age">Age</Form.Label>
+            <Form.Label htmlFor="color">Colorway</Form.Label>
             <Form.Control
-                placeholder="How old is your pet?"
-                type="number"
-                name="age"
-                id="age"
+                placeholder="Colorway"
+                name="color"
+                id="color"
+            />
+            <Form.Label htmlFor="style">Style</Form.Label>
+            <Form.Control
+                placeholder="Which style is your shoe"
+                name="style"
+                id="style"
             />
             <Form.Check
-                label="Is this pet adoptable?"
-                name="adoptable"
+                label="Check box if these shoes are for sale?"
+                name="forsale"
                 defaultChecked={ false  }
             />
             <Button type="submit">Submit</Button>
@@ -35,4 +40,4 @@ const PetForm = (props) => {
     )
 }
 
-export default PetForm
+export default ShoeForm

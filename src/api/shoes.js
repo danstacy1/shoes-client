@@ -1,10 +1,10 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const getAllPets = () => {
-    return axios(`${apiUrl}/pets`)
+export const getAllShoes = () => {
+    return axios(`${apiUrl}/shoes`)
 }
 
-export const getOnePet = (id) => {
-    return axios(`${apiUrl}/pets/${id}`)
+export const getOneShoe = (id) => {
+    return axios(`${apiUrl}/shoes/${id}`)
 }

@@ -1,4 +1,4 @@
-import PetsIndex from './pets/PetsIndex'
+import ShoesIndex from './shoes/ShoeIndex'
 
 const Home = (props) => {
 	// const { msgAlert, user } = props
@@ -8,8 +8,8 @@ const Home = (props) => {
 
 	return (
 		<>
-			<h2>See the Pets</h2>
-			<PetsIndex msgAlert={ msgAlert }/>
+			<h2>My Shoes</h2>
+			<ShoesIndex msgAlert={ msgAlert }/>
 		</>
 	)
 }

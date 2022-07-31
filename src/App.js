@@ -12,9 +12,9 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
-import ShowPet from './components/pets/ShowPet'
-import PetForm from './components/shared/PetForm'
-import CreatePet from './components/pets/CreatePet'
+import ShowShoe from './components/shoes/ShowShoe'
+import ShoeForm from './components/shared/ShoeForm'
+import CreateShoe from './components/shoes/CreateShoe'
 
 const App = () => {
 
@@ -72,14 +72,14 @@ const msgAlert = ({ heading, message, variant }) => {
 			</RequireAuth>}
 		/>
 		<Route
-					path="/pets/:id"
-					element={ <ShowPet msgAlert={ msgAlert } />}
+					path="/shoes/:id"
+					element={ <ShowShoe msgAlert={ msgAlert } />}
 				/>
 			<Route
-				path="/addPet"
+				path="/addShoe"
 				element={
 					<RequireAuth user={ user }>
-						<CreatePet />
+						<CreateShoe />
 					</RequireAuth>  
 				}
 			/>
