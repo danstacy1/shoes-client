@@ -10,7 +10,7 @@ const authenticatedOptions = (
 	<>
 		<Nav.Link>
 			<Link to="/addShoe" style={ linkStyle }>
-				Add some Shoes
+				Add Shoes
 			</Link>
 		</Nav.Link>
 		<Nav.Link>
