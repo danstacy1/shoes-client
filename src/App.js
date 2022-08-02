@@ -73,13 +73,13 @@ const msgAlert = ({ heading, message, variant }) => {
 		/>
 		<Route
 					path="/shoes/:id"
-					element={ <ShowShoe msgAlert={ msgAlert } />}
+					element={ <ShowShoe user={ user } msgAlert={ msgAlert } />}
 				/>
 			<Route
 				path="/addShoe"
 				element={
 					<RequireAuth user={ user }>
-						<CreateShoe />
+						<CreateShoe msgAlert={msgAlert} user={user} />
 					</RequireAuth>  
 				}
 			/>

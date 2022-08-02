@@ -1,31 +1,23 @@
-import { useState } from 'react'
-import { createShoe } from '../../api/shoes'
-import { useNavigate } from 'react-router-dom'
-import { createShoeSuccess, createShoeFailure } from '../shared/AutoDismissAlert/messages'
-
+import React, { useState } from 'react'
+import { Modal } from 'react-bootstrap'
 import ShoeForm from '../shared/ShoeForm'
+import { updateShoeSuccess, updateShoeFailure } from '../shared/AutoDismissAlert/messages'
 
-const CreateShoe = (props) => {
-    // console.log('these are the props in createShoe\n', props)
-    const { user, msgAlert } = props
+const EditShoeModal = (props) => {
+    const { 
+        user, show, handleClose, 
+        updateShoe, msgAlert, triggerRefresh
+    } = props
 
-    const navigate = useNavigate()
+    const [shoe, setShoe] = useState(props.shoe)
 
-    const [shoe, setShoe] = useState({
-        brand: '',
-        name: '',
-        color: '',
-        style: '',
-        adoptable: false
-    })
-
-    console.log('this is shoe in createShoe', shoe)
-
+    console.log('shoe in edit modal', shoe)
 
     const handleChange = (e) => {
         setShoe(prevShoe => {
             let updatedValue = e.target.value
             const updatedName = e.target.name
+
             console.log('this is the input type', e.target.type)
 
             if (e.target.type === 'number') {
@@ -40,7 +32,6 @@ const CreateShoe = (props) => {
                 updatedValue = false
             }
 
-
             const updatedShoe = {
                 [updatedName]: updatedValue
             }
@@ -51,41 +42,49 @@ const CreateShoe = (props) => {
         })
     }
 
-    // Add handle submit here.
     const handleSubmit = (e) => {
         // e equals the event
         e.preventDefault()
 
-        createShoe(user, shoe)
-            // if we're successful, navigate to the show page for the new pet
-            .then(res => { navigate(`/shoes/${res.data.shoe.id}`)})
+        updateShoe(user, shoe)
+            // if we're successful in the modal, we want the modal to close
+            .then(() => handleClose())
             // send a success message to the user
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
-                    message: createShoeSuccess,
+                    message: updateShoeSuccess,
                     variant: 'success'
                 })
             })
+            // if everything is successful, we need to trigger our refresh for the show page
+            // this is that setUpdated function in showShoe component
+            // updated is in ShowShoe's useEffect's dependency array
+            // changes to the updated boolean cause ShowShoe's useEffect to run again.
+            .then(() => triggerRefresh())
             // if there is an error, tell the user about it
             .catch(() => 
                 msgAlert({
                     heading: 'Oh No!',
-                    message: createShoeFailure,
+                    message: updateShoeFailure,
                     variant: 'danger'
                 })
             )
     }
 
-
     return (
-        <ShoeForm 
-            shoe={ shoe } 
-            handleChange={ handleChange }
-            handleSubmit={ handleSubmit }
-            heading="Add a new shoe!"
-        />
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton />
+            <Modal.Body>
+                <ShoeForm 
+                    shoe={shoe}
+                    handleChange={handleChange}
+                    handleSubmit={handleSubmit}
+                    heading="Update Shoe"
+                />
+            </Modal.Body>
+        </Modal>
     )
 }
 
-export default CreateShoe
+export default EditShoeModal
