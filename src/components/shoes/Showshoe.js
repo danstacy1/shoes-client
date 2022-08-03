@@ -43,7 +43,7 @@ const ShowShoe = (props) => {
             .catch(err => {                   
                 msgAlert({
                     heading: 'Error getting shoe',
-                    message: messages.getShoesFailure,
+                    message: messages.getShoeFailure,
                     variant: 'danger'
                 })
                 navigate('/')
@@ -116,7 +116,7 @@ const ShowShoe = (props) => {
                         <Button onClick={() => setShoelaceModalShow(true)}
                             className="m-2" variant="info"
                         >
-                            Give your {shoe.name} some shoelaaces!
+                            Give your {shoe.name} some shoelaces!
                         </Button>
                         {
                             shoe.owner && user && shoe.owner._id === user._id 
@@ -154,7 +154,7 @@ const ShowShoe = (props) => {
                 triggerRefresh={() => setUpdated(prev => !prev)}
                 handleClose={() => setEditModalShow(false)} 
             />
-            <NewToyModal 
+            <NewShoelaceModal 
                 shoe={shoe}
                 show={shoelaceModalShow}
                 user={user}

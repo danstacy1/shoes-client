@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
-import { ShoelaceForm } from '../shared/ShoelaceForm'
+import ShoelaceForm from '../shared/ShoelaceForm'
 import { createShoelace } from '../../api/shoelaces'
 
 
@@ -14,9 +14,9 @@ const NewShoelaceModal = (props) => {
     console.log('shoe in edit modal', shoe)
 
     const handleChange = (e) => {
-        setShoe(prevShoe => {
+        setShoelace(prevShoelace => {
             let value = e.target.value
-            const name = e.target.name
+            const color = e.target.color
 
             console.log('this is the input type', e.target.type)
 
@@ -28,7 +28,7 @@ const NewShoelaceModal = (props) => {
             // }
 
             const updatedShoelace = {
-                [name]: value
+                [color]: value
             }
             return {
                 ...prevShoelace,
@@ -40,7 +40,6 @@ const NewShoelaceModal = (props) => {
     const handleSubmit = (e) => {
         // e equals the event
         e.preventDefault()
-
         createShoelace(user, shoe._id, shoelace)
             // if we're successful in the modal, we want the modal to close
             .then(() => handleClose())
@@ -48,7 +47,7 @@ const NewShoelaceModal = (props) => {
             .then(() => {
                 msgAlert({
                     heading: 'Oh Yeah!',
-                    message: 'Brooo! Those shoes bussin',
+                    message: 'These laces bussin son!',
                     variant: 'success'
                 })
             })
@@ -67,15 +66,15 @@ const NewShoelaceModal = (props) => {
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton />
             <Modal.Body>
-                <ToyForm 
+                <ShoelaceForm 
                     shoelace={shoelace}
                     handleChange={handleChange}
                     handleSubmit={handleSubmit}
-                    heading="Give those shoes some shoelaces!"
+                    heading="Give the shoes some damn shoelaces!"
                 />
             </Modal.Body>
         </Modal>
     )
 }
 
-export default NewShoelaceModal
+export default NewShoelaceModal 

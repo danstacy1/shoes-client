@@ -13,7 +13,6 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowShoe from './components/shoes/ShowShoe'
-// import ShoeForm from './components/shared/ShoeForm'
 import CreateShoe from './components/shoes/CreateShoe'
 
 const App = () => {
@@ -22,9 +21,9 @@ const [user, setUser] = useState(null)
 const [msgAlerts, setMsgAlerts] = useState([])
 
 console.log('user in app', user)
-console.log('message alerts', msgAlerts)
+// console.log('message alerts', msgAlerts)
 const clearUser = () => {
-console.log('clear user ran')
+// console.log('clear user ran')
 setUser(null)
 }
 
@@ -56,43 +55,43 @@ const msgAlert = ({ heading, message, variant }) => {
 					path='/sign-in'
 					element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
 				/>
-		<Route
-		path='/sign-out'
-		element={
-			<RequireAuth user={user}>
-			<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-			</RequireAuth>
-		}
-		/>
-		<Route
-		path='/change-password'
-		element={
-			<RequireAuth user={user}>
-			<ChangePassword msgAlert={msgAlert} user={user} />
-			</RequireAuth>}
-		/>
-		<Route
-					path="/shoes/:id"
-					element={ <ShowShoe user={ user } msgAlert={ msgAlert } />}
-				/>
-			<Route
-				path="/addShoe"
+				<Route
+				path='/sign-out'
 				element={
-					<RequireAuth user={ user }>
-						<CreateShoe msgAlert={msgAlert} user={user} />
-					</RequireAuth>  
+					<RequireAuth user={user}>
+					<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+					</RequireAuth>
 				}
-			/>
-	</Routes>
-			{msgAlerts.map((msgAlert) => (
-				<AutoDismissAlert
-					key={msgAlert.id}
-					heading={msgAlert.heading}
-					variant={msgAlert.variant}
-					message={msgAlert.message}
-					id={msgAlert.id}
-					deleteAlert={deleteAlert}
 				/>
+				<Route
+				path='/change-password'
+				element={
+					<RequireAuth user={user}>
+					<ChangePassword msgAlert={msgAlert} user={user} />
+					</RequireAuth>}
+				/>
+				<Route
+						path="/shoes/:id"
+						element={ <ShowShoe user={ user } msgAlert={ msgAlert } />}
+					/>
+				<Route
+					path="/addShoe"
+					element={
+						<RequireAuth user={ user }>
+							<CreateShoe msgAlert={msgAlert} user={user} />
+						</RequireAuth>  
+					}
+					/>
+			</Routes>
+					{msgAlerts.map((msgAlert) => (
+						<AutoDismissAlert
+							key={msgAlert.id}
+							heading={msgAlert.heading}
+							variant={msgAlert.variant}
+							message={msgAlert.message}
+							id={msgAlert.id}
+							deleteAlert={deleteAlert}
+						/>
 			))}
 		</Fragment>
 	)

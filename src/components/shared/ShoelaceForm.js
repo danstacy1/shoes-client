@@ -10,7 +10,7 @@ const ShoelaceForm = (props) => {
             <Form onSubmit={handleSubmit}>
                 <Form.Label htmlFor="color">Color</Form.Label>
                 <Form.Control
-                    placeholder="What color are the shoelaces??"
+                    placeholder="What color are the shoelaces?"
                     name="color"
                     id="color"
                     value={ shoelace.color }
@@ -23,3 +23,5 @@ const ShoelaceForm = (props) => {
 }
 
 export default ShoelaceForm
+
+

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap'
-import { ShoelaceForm } from '../shared/ShoelaceForm'
+import ShoelaceForm from '../shared/ShoelaceForm'
 import { updateShoelace } from '../../api/shoelaces'
 
 
@@ -24,12 +24,12 @@ const EditShoelaceModal = (props) => {
         //         value = false
         //     }
 
-        //     const updatedToy = {
+        //     const updatedShoelace = {
         //         [name]: value
         //     }
         //     return {
-        //         ...prevToy,
-        //         ...updatedToy
+        //         ...prevShoelace,
+        //         ...updatedShoelace
         //     }
         // 
         })
