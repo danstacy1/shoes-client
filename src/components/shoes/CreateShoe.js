@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { createShoe } from '../../api/shoes'
 import { useNavigate } from 'react-router-dom'
 import { createShoeSuccess, createShoeFailure } from '../shared/AutoDismissAlert/messages'
-
 import ShoeForm from '../shared/ShoeForm'
 
 const CreateShoe = (props) => {
@@ -16,10 +15,10 @@ const CreateShoe = (props) => {
         name: '',
         color: '',
         style: '',
-        adoptable: false
+        forsale: false
     })
 
-    console.log('this is shoe in createShoe', shoe)
+    console.log('this is the shoe in createShoe', shoe)
 
 
     const handleChange = (e) => {
@@ -28,10 +27,10 @@ const CreateShoe = (props) => {
             const updatedName = e.target.name
             console.log('this is the input type', e.target.type)
 
-            if (e.target.type === 'number') {
-                // this is looking at the input type, and changing it from the default, which is a string, into an actual number
-                updatedValue = parseInt(e.target.value)
-            }
+            // if (e.target.type === 'number') {
+            //     // this is looking at the input type, and changing it from the default, which is a string, into an actual number
+            //     updatedValue = parseInt(e.target.value)
+            // }
 
             // this handles the checkbox, changing on to true etc
             if (updatedName === "forsale" && e.target.checked) {
@@ -55,9 +54,10 @@ const CreateShoe = (props) => {
     const handleSubmit = (e) => {
         // e equals the event
         e.preventDefault()
-
+        console.log('this is the user', user)
+        console.log('this is the shoe', shoe)
         createShoe(user, shoe)
-            // if we're successful, navigate to the show page for the new pet
+            // if we're successful, navigate to the show page for the new shoe
             .then(res => { navigate(`/shoes/${res.data.shoe.id}`)})
             // send a success message to the user
             .then(() => {

@@ -1,16 +1,12 @@
-import { 
-    Form,
-    Button, 
-    Container
-} from 'react-bootstrap'
+import { Form, Button, Container } from 'react-bootstrap'
 
 const ShoeForm = (props) => {
     const { shoe, handleChange, heading, handleSubmit } = props 
     return (
         <Container className="justify-content-center">
             <h3>{heading}</h3>
-            <Form onSubmit={handleSubmit}></Form>
-            <Form>
+            <Form onSubmit={handleSubmit}>
+        
                 <Form.Label htmlFor="brand">Brand</Form.Label>
                 <Form.Control
                     placeholder="What brand is your shoe?"
@@ -22,8 +18,8 @@ const ShoeForm = (props) => {
                 <Form.Label htmlFor="name">Name</Form.Label>
                 <Form.Control
                     placeholder="Which shoe is it?"
-                    name="type"
-                    id="type"
+                    name="name"
+                    id="name"
                     value={ shoe.name }
                     onChange={ handleChange }
                     />

@@ -13,7 +13,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import ShowShoe from './components/shoes/ShowShoe'
-import ShoeForm from './components/shared/ShoeForm'
+// import ShoeForm from './components/shared/ShoeForm'
 import CreateShoe from './components/shoes/CreateShoe'
 
 const App = () => {
