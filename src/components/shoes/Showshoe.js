@@ -113,15 +113,15 @@ const ShowShoe = (props) => {
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
-                        <Button onClick={() => setShoelaceModalShow(true)}
-                            className="m-2" variant="info"
-                        >
-                            Give your {shoe.name} some shoelaces!
-                        </Button>
                         {
                             shoe.owner && user && shoe.owner._id === user._id 
                             ?
                             <>
+                                <Button onClick={() => setShoelaceModalShow(true)}
+                                    className="m-2" variant="info"
+                                >
+                                    Give your {shoe.name} some shoelaces!
+                                </Button>
                                 <Button onClick={() => setEditModalShow(true)} 
                                     className="m-2" 
                                     variant="warning"

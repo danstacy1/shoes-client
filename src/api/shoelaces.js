@@ -2,7 +2,7 @@ import apiUrl from '../apiConfig'
 import axios from 'axios'
 
 // CREATE
-export const createShoelace = (user, shoeId, newShoelace) => {
+export const createShoelace = (user, shoeId, newShoecdlace) => {
     console.log('the user in createShoelace', user)
     console.log('the newShoelace in createShoelace', newShoelace)
 	return axios({
